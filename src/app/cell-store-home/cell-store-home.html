@@ -1,0 +1,15 @@
+<div class="container-fluid px-5">
+
+  <div class="row">
+
+    <div class="col-lg-8">
+      <app-cell-store-list #cellStoreList></app-cell-store-list>
+    </div>
+
+    <div class="col-lg-4">
+      <app-cart (removedFromCart)="reloadProducts()" ></app-cart>
+    </div>
+
+  </div>
+
+</div>

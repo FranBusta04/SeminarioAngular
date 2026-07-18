@@ -1,0 +1,16 @@
+
+td{
+    font-weight: bold; 
+    vertical-align: middle;
+}
+
+.buy-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.add-button {
+  white-space: nowrap;
+}

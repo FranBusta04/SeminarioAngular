@@ -1,0 +1,64 @@
+<div class="card shadow-sm">
+
+  <div class="card-header bg-primary text-white">
+    <h3 class="mb-0">📱 Artículos disponibles</h3>
+  </div>
+
+  <div class="card-body">
+
+    <table class="table table-hover align-middle text-center">
+
+      <thead class="table-light">
+        <tr>
+          <th>Producto</th>
+          <th>Precio</th>
+          <th>Stock</th>
+          <th>Estado</th>
+          <th>Comprar</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let cell of cells">
+          <td>{{ cell.name }}</td>
+
+          <td>{{ cell.price | currency }}</td>
+
+          <td>
+            <span class="badge badge-warning" *ngIf="cell.stock">
+              {{ cell.stock }}
+            </span>
+          </td>
+
+          <td>
+            <ng-container *ngIf="cell.sealed">
+              Sellado
+            </ng-container>
+
+            <ng-container *ngIf="!cell.sealed">
+              Usado
+            </ng-container>
+          </td>
+
+          <td>
+            <div class="form-control text-center" *ngIf="cell.stock == 0">
+              <span class="btn btn-sm btn-danger">
+                Sin stock
+              </span>
+            </div>
+
+            <app-input-int [(quantity)]="cell.quantity" [max]="cell.stock"
+              *ngIf="cell.stock" (maxReached)="onMaxReached($event)">
+            </app-input-int>
+
+            <button class="btn btn-sm btn-success" *ngIf="cell.stock"
+              (click)="addToCart(cell)"> Agregar al carrito </button>
+          </td>
+        </tr>
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>
